@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package smokers;
+
+option java_multiple_files = true;
+option java_package = "com.umutavci.proto";
+option java_outer_classname = "CigaretteProto";
+
+service TableService {
+  rpc putIngredient(IngredientRequest) returns (PutResponse);
+  rpc checkIngredients(CheckRequest) returns (CheckResponse);
+  rpc takeIngredient(TakeRequest) returns (TakeResponse);
+}
+
+service DealerService {
+  rpc requestContinue(ContinueRequest) returns (ContinueResponse);
+}
+
+message IngredientRequest { int32 ingredient = 1; }
+message PutResponse {}
+message CheckRequest {}
+message CheckResponse { repeated int32 ingredients = 1; }
+message TakeRequest { int32 ingredient = 1; }
+message TakeResponse {}
+message ContinueRequest {}
+message ContinueResponse {}
